@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <version-info>
+    <project-version value="1.0.0.43"/>
+    <build-date value="20180629T142708"/>
+    <build-hash value="0"/>
+  </version-info>
+  <project-info>
+    <project-name value="cueshell"/>
+    <project-description value="Shell application for CUE utils scripts."/>
+    <project-acronym value="w2tshell"/>
+    <company-name value="necne"/>
+    <language value="EN"/>
+    <legal-copyright value="Copyright (c) 2023-[build-date:yyyy] [company-name]"/>
+    <file-version-string value="[project-version:1.2.3] release [project-version:4] ([build-date:dd mmmm yyyy])"/>
+    <product-version-string value="[project-version:1.2.3] release [project-version:4] ([build-date:dd mmmm yyyy])"/>
+  </project-info>
+</config>

@@ -1,0 +1,72 @@
+object fmMain: TfmMain
+  Left = 1337
+  Height = 578
+  Top = 430
+  Width = 768
+  Caption = 'CUE utils GUI'
+  ClientHeight = 578
+  ClientWidth = 768
+  Constraints.MinHeight = 420
+  Constraints.MinWidth = 768
+  OnClose = FormClose
+  OnCreate = FormCreate
+  LCLVersion = '2.2.0.4'
+  object ebCUEFileName: TFileNameEdit
+    Left = 8
+    Height = 29
+    Top = 8
+    Width = 624
+    OnAcceptFileName = ebCUEFileNameAcceptFileName
+    DialogTitle = 'Select CUE file name'
+    Filter = 'CUE file|*.cue|All files|*.*'
+    FilterIndex = 0
+    HideDirectories = False
+    ButtonWidth = 23
+    NumGlyphs = 1
+    Anchors = [akTop, akLeft, akRight]
+    MaxLength = 0
+    TabOrder = 0
+    TextHint = 'CUE file name'
+  end
+  object btnConvertWAVtoTAGs: TButton
+    Left = 640
+    Height = 61
+    Top = 9
+    Width = 118
+    Anchors = [akTop, akRight]
+    Caption = '&Run'
+    OnClick = btnConvertWAVtoTAGsClick
+    TabOrder = 1
+  end
+  object meConversionLog: TMemo
+    Left = 8
+    Height = 451
+    Top = 112
+    Width = 750
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    TabOrder = 2
+  end
+  object lblConversionLog: TLabel
+    Left = 8
+    Height = 17
+    Top = 85
+    Width = 86
+    Caption = 'Conversion log:'
+  end
+  object cbScript: TComboBox
+    Left = 8
+    Height = 29
+    Top = 41
+    Width = 624
+    Anchors = [akTop, akLeft, akRight]
+    ItemHeight = 0
+    ItemIndex = 0
+    Items.Strings = (
+      'Split CUE and WAVE by Performer'
+      'Detect suspicious ZEROs in WAVE/CUE'
+    )
+    Style = csDropDownList
+    TabOrder = 3
+    Text = 'Split CUE and WAVE by Performer'
+  end
+end
