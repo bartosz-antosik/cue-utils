@@ -9,3 +9,4 @@ shell/*.ini
 shell/backup/**
 shell/lib/**
 shell/obj/**
+cueshell*
