@@ -22,13 +22,12 @@ type
   { TfmMain }
 
   TfmMain = class(TForm)
-    btnConvertWAVtoTAGs: TButton;
+    btnRun: TButton;
     cbScript: TComboBox;
     ebCUEFileName: TFileNameEdit;
     lblConversionLog: TLabel;
     meConversionLog: TMemo;
-    procedure btnConvertTAGstoCSVClick(Sender: TObject);
-    procedure btnConvertWAVtoTAGsClick(Sender: TObject);
+    procedure btnRunClick(Sender: TObject);
     procedure ebCUEFileNameAcceptFileName(Sender: TObject; var Value: String);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -50,9 +49,9 @@ implementation
 
 procedure TfmMain.FormCreate(Sender: TObject);
 begin
-  settings := TINIFile.Create('cuegui.ini');
+  settings := TINIFile.Create('cueshell.ini');
 
-  ebCUEFileName.InitialDir := settings.ReadString('cuegui', 'CUEInitialDir', '');
+  ebCUEFileName.InitialDir := settings.ReadString('cueshell', 'CUEInitialDir', '');
 end;
 
 procedure TfmMain.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -67,20 +66,24 @@ begin
   ebCUEFileName.InitialDir := ExtractFilePath(Value);
 end;
 
-procedure TfmMain.btnConvertWAVtoTAGsClick(Sender: TObject);
+procedure TfmMain.btnRunClick(Sender: TObject);
 var
-  o: string;
+  e, c, o: ansistring;
 begin
-  if RunCommand('python.exe', ['wav2time.py ', ebCUEFileName.FileName], o) then
-    meConversionLog.Lines.Text := o
-  else
-    meConversionLog.Lines.Text := 'Error runing script!';
-end;
+  case cbScript.ItemIndex of
+       0: begin
+          e := 'python';
+          c := 'cuesplit.py';
+       end;
+       1: begin
+          e := 'python';
+          c := 'cuezeros.py';
+       end;
+  end;
 
-procedure TfmMain.btnConvertTAGstoCSVClick(Sender: TObject);
-var
-  o: string;
-begin
+  RunCommand(e, [c, ebCUEFileName.FileName], o, [poStderrToOutPut]);
+
+  meConversionLog.Lines.Text := o
 end;
 
 end.

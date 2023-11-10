@@ -28,14 +28,14 @@ object fmMain: TfmMain
     TabOrder = 0
     TextHint = 'CUE file name'
   end
-  object btnConvertWAVtoTAGs: TButton
+  object btnRun: TButton
     Left = 640
     Height = 61
     Top = 9
     Width = 118
     Anchors = [akTop, akRight]
     Caption = '&Run'
-    OnClick = btnConvertWAVtoTAGsClick
+    OnClick = btnRunClick
     TabOrder = 1
   end
   object meConversionLog: TMemo
